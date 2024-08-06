@@ -1,4 +1,4 @@
-import Mail from "../lib/Mail.js";
+import Queue from '../lib/Queue.js';
 
 export default {
     async store(req, res) {
@@ -10,7 +10,7 @@ export default {
             password
         };
 
-        // Adicionar Job RegistrationMail na Fila
+        await Queue.add({ user });
 
         return res.json(user);
     }
